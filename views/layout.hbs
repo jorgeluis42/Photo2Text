@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://use.fontawesome.com/3903c9d7fd.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<ul class="menu">
+    <li class="menu_list">
+        <span class="front fas fa-home"></span>
+        <a href="/" class="side">home</a>
+    </li>
+    <li class="menu_list">
+        <span class="front fas fa-info"></span>
+        <a href="#" class="side">Info</a>
+    </li>
+    <li class="menu_list">
+        <span class="front fas fa-briefcase"></span>
+        <a href="#" class="side">Gallery</a>
+    </li>
+    <li class="menu_list">
+        <span class="front fas fa-paper-plane"></span>
+        <a href="#" class="side">contact</a>
+    </li>
+</ul>
+
+<ul>
+        {{#if currentUser}}
+        <li>Welcome {{currentUser.username}}</li>
+        <li><a href="/logout">Logout</a></li>
+        {{else}}
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/login">Login</a></li>
+        {{/if}}
+</ul>
+{{{body}}}
+  <script src="/javascripts/script.js"></script>
+</body>
+</html>

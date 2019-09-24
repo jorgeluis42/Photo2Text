@@ -1,0 +1,20 @@
+<div class="user-new">
+    <h2>User Signup</h2>
+    {{#if errorMessage }}
+    <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
+    <form method="POST" action="/signup">
+
+        <label for="username">Username:</label>
+        <input name="username" type="text" required />
+
+        <label for="password">Password:</label>
+        <input name="password" type="password" required />
+
+        <br /><br />
+        <button>Submit</button>
+
+    </form>
+</div>
+
+<h1>SIGNUP</h1>
