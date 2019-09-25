@@ -1,0 +1,51 @@
+<form>
+  <div class="row">
+    <div class="col-10">
+      <input type="file" class="custom-file-input" id="customFile">
+      <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
+    <div class="col-2">
+      <input type="submit" class="btn btn-success" value="Submit">
+    </div>
+  </div>
+</form>
+
+<script>
+  // sets the name on the file label
+  $(".custom-file-input").on("change", function () {
+    console.log("clicked")
+    const fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+  //form Submit
+  $("form").submit(function (evt) {
+    evt.preventDefault();
+    // cretes a form data object
+    const formData = new FormData();
+    // uses the browsers file reader api to read the file
+    // this returns an array of files so we grab the first one
+    const fileFromInput = ($('#customFile').prop('files')[0]);
+    // appends the file to the form data object
+    formData.append('image', fileFromInput);
+    console.log(formData.get('image'));
+    // makes the post request to send the object
+    // upon success it will execute a done
+    // if the server timeout or returns a non 200 status code this will execute
+    // the fail
+    $.ajax({
+      url: '/gallery/upload',
+      type: 'POST',
+      data: formData,
+      async: true,
+      cache: false,
+      contentType: false,
+      enctype: 'multipart/form-data',
+      processData: false,
+    }).done((response) => {
+      alert(response)
+    }).fail((err) => {
+      alert("error");
+    });
+
+  })
+</script>

@@ -11,10 +11,9 @@ router.get("/gallery", (req, res, next) => {
   res.render("gallery");
 });
 
-router.post("/gallery/upload", (req, res) => {
-  console.log("hello");
+router.post("/gallery/upload", formidable, (req, res) => {
   const fileName = req.files;
-  console.log(fileName);
+  res.status('201').json('success')
 });
 
 module.exports = router;
