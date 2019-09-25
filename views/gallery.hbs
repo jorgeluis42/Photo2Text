@@ -1,0 +1,35 @@
+
+  <label for="avatar">Upload Image</label>
+  <input type="file"
+    id="imageUpload" name="imageUpload"
+    accept="image/png, image/jpeg, application/pdf">
+</form>
+<button id="upload">Submit</button>
+
+<script>
+  $('#upload').on('click', function () {
+
+        const myFormData = new FormData();
+        const file_data = $("#imageUpload").prop("files")[0]; 
+        myFormData.append(" ", file_data);
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "http://localhost:3000/gallery/upload",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "cache-control": "no-cache",
+          },
+          "processData": false,
+          "contentType": false,
+          "mimeType": "multipart/form-data",
+          "data": myFormData,
+        } 
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}); 
+
+
+</script>

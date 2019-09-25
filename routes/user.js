@@ -10,8 +10,6 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-
-
     const salt = bcrypt.genSaltSync(10)
     let password = bcrypt.hashSync(req.body.password, salt)
 
@@ -56,7 +54,6 @@ router.get("/logout", (req, res, next) => {
 router.get('/secret', (req, res, next) => {
 
     console.log(req.user)
-
     if (req.user) {
         res.render('users/secret')
     } else {
