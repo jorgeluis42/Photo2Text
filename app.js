@@ -16,7 +16,9 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User.js");
 
 mongoose
-  .connect("mongodb://localhost/project3", { useNewUrlParser: true })
+  .connect(process.env.mongo || "mongodb://localhost/project3", {
+    useNewUrlParser: true
+  })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
