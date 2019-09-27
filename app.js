@@ -13,7 +13,7 @@ const bcrypt = require("bcryptjs");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("./models/User.js");
+const User = require("./models/user");
 
 mongoose
   .connect(process.env.mongo || "mongodb://localhost/project3", {
