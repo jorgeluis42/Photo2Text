@@ -35,7 +35,7 @@ module.exports = {
     options.formData.image.options.fileName = fileLocation;
     request(options, (error, response, body) => {
       if (error) console.log(error);
-      console.log"-=-=-=-=-=-=-=-=-=-=-=-==--",(body)
+      // console.log("-=-=-=-=-=-=-=-=-=-=-=-==--",(body))
       cb(JSON.parse(body));
     });
   }
