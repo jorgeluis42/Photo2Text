@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
   <ul class="menu">
     <li class="menu_list">
       <span class="front fas fa-home"></span>
@@ -29,16 +28,17 @@
     </li>
     <li class="menu_list">
       <span class="front fas fa-info"></span>
-      <a href="#" class="side">Info</a>
+      <a href="/gallery" class="side">Upload File</a>
     </li>
     <li class="menu_list">
       <span class="front fas fa-briefcase"></span>
-      <a href="/gallery" class="side">Gallery</a>
+      <a href="/gallery/all" class="side">Gallery</a>
     </li>
     <li class="menu_list">
       <span class="front fas fa-paper-plane"></span>
       <ul>
     {{#if currentUser}}
+   
     <a class="side" href="/logout">Logout</a>
     {{else}}
     <a class="side" href="/login">Login</a>

@@ -1,0 +1,92 @@
+<style>
+  .card-body{
+    background: white;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    {{#each gallery}}
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+          <img
+            class="card-img-top"
+            src="/uploads/{{this.fileName}}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              Img OCR
+            </h5>
+            <p id="analysis" class="card-text">
+              {{#if this.description}}
+                {{this.description}}
+              {{else}}
+                Pending Analysis
+              {{/if}}
+            </p>
+            <a
+              id="analyze"
+              data-id="{{this.id}}"
+              data-file="{{this.fileName}}"
+              href="#"
+              class="btn btn-primary"
+            >
+              Analyze
+            </a>
+            <a
+              href="#"
+              id="delete"
+              data-id="{{this.id}}"
+              data-file="{{this.fileName}}"
+              class="btn btn-danger"
+            >
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<script>
+  $(".btn-primary").click(function(event){
+  console.log($(this))
+   const fileName = $(this).data('file');
+    const settings = {
+    "async": true,
+    "crossDomain": true,
+    "url":`http://localhost:3000/gallery/analyze/${fileName}`,
+    "method": "PUT",
+    "headers": {
+      "cache-control": "no-cache",
+    }
+  }
+  $.ajax(settings).done((response)=> {
+      console.log(response)
+      const parent = $(this).parent(); 
+      parent.find(".card-text").text(response.toLowerCase());
+  });
+  });
+
+  $(".btn-danger").click(function(event){
+    const fileName = $(this).data('file');
+    const id = $(this).data('id');
+    const settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": `http://localhost:3000/gallery/image/${id}?fileName=${fileName}`,
+      "method": "DELETE",
+      "headers": {
+        "Accept": "*/*",
+        "Cache-Control": "no-cache",
+      }
+    }
+
+  $.ajax(settings).done( (response)=> {
+    console.log(response);
+    const parent = $(this).parent().parent();
+    parent.remove();
+  });
+
+  });
+</script>
