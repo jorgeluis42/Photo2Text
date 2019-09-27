@@ -10,7 +10,7 @@
         <div class="card" style="width: 18rem;">
           <img
             class="card-img-top"
-            src="/uploads/{{this.fileName}}"
+            src="{{this.imgPath}}"
             alt="Card image cap"
           />
           <div class="card-body">
@@ -50,8 +50,8 @@
 </div>
 <script>
   $(".btn-primary").click(function(event){
-  console.log($(this))
-   const fileName = $(this).data('file');
+  console.log($(this).data('id'))
+   const fileName = $(this).data('id');
     const settings = {
     "async": true,
     "crossDomain": true,

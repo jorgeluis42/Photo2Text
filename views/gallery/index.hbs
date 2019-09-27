@@ -1,7 +1,7 @@
-<form>
+<form action="/gallery/upload" method="POST" enctype="multipart/form-data">
   <div class="row">
     <div class="col-10">
-      <input type="file" class="custom-file-input" id="customFile">
+      <input type="file" class="custom-file-input" id="customFile" name="photo">
       <label class="custom-file-label" for="customFile">Choose file</label>
     </div>
     <div class="col-2">
@@ -11,7 +11,7 @@
 </form>
 
 
-<script>
+{{!-- <script>
   // sets the name on the file label
   $(".custom-file-input").on("change", function () {
     console.log("clicked")
@@ -52,8 +52,8 @@
     });
 
   })
-</script>
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+</script> --}}
+{{!-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <img src="..." class="rounded mr-2" alt="...">
     <strong class="mr-auto">Bootstrap</strong>
@@ -66,4 +66,4 @@
   <div class="toast-body">
     Hello, world! This is a toast message.
   </div>
-</div>
+</div> --}}

@@ -30,13 +30,12 @@ const options = {
 
 module.exports = {
   ocr: (fileLocation, cb) => {
-    const readFile = fs.createReadStream(
-      path.join(__dirname, `../public/uploads/${fileLocation}`)
-    );
+    const readFile = fs.createReadStream(fileLocation);
     options.formData.image.value = readFile;
     options.formData.image.options.fileName = fileLocation;
     request(options, (error, response, body) => {
       if (error) console.log(error);
+      console.log"-=-=-=-=-=-=-=-=-=-=-=-==--",(body)
       cb(JSON.parse(body));
     });
   }
