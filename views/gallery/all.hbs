@@ -53,7 +53,7 @@
     const settings = {
     "async": true,
     "crossDomain": true,
-    "url":`http://localhost:3000/gallery/analyze/${id}`,
+    "url":`/gallery/analyze/${id}`,
     "method": "PUT",
     "headers": {
       "cache-control": "no-cache",
@@ -73,7 +73,7 @@
     const settings = {
       "async": true,
       "crossDomain": true,
-      "url": `http://localhost:3000/gallery/image/${id}?fileName=${fileName}`,
+      "url": `/gallery/image/${id}?fileName=${fileName}`,
       "method": "DELETE",
       "headers": {
         "Accept": "*/*",

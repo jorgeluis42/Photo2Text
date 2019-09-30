@@ -45,7 +45,7 @@ router.post("/gallery/upload", uploadCloud.single('photo'), (req, res, next) => 
   }
   galleryObj.imgPath=req.file.url;
   galleryObj.username= req.user.username
-  res.redirect('/');
+  res.redirect('/gallery/all');
   gallery.create(galleryObj)
   .then(newGallery => {
     res.redirect('/index')
